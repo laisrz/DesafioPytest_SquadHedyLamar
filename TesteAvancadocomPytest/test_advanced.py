@@ -34,17 +34,20 @@ class TestFile:
         with open("/tmp/done") as _f:
             contents = _f.read()
         assert contents == "1"
+
+import pytest
         
 @pytest.fixture
 def tmpfile(tmpdir):
     def write():
         file = tmpdir.join("done")
-        file.erite("1")
+        file.write("1")
         return file.strpath
     return write
 
+class TestFile:
 
-def test_f(self, tmpfile):
+ def test_f(self, tmpfile):
     path = tmpfile()
     with open(path) as _f:
         contents = _f.read()
